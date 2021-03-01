@@ -38,14 +38,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     // how you retrieve your users from user database
     public UserDetailsService userDetailsService() {
 
-        UserDetails annaSmith = User.builder()
+        UserDetails anna = User.builder()
                 .username("anna")
                 .password(passwordEncoder.encode("password"))
-                .roles("STUDENT") //ROLE_STUDENT
+                .roles("STUDENT") // ROLE_STUDENT
+                .build();
+
+        UserDetails netti = User.builder()
+                .username("netti")
+                .password(passwordEncoder.encode("password"))
+                .roles("ADMIN") // ROLE_ADMIN
                 .build();
 
         return new InMemoryUserDetailsManager(
-                annaSmith
+                anna,
+                netti
         );
     }
 }
