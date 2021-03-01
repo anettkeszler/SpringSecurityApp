@@ -13,6 +13,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
+                .antMatchers("/", "index", "/css/*", "/js/*") // whitelist specific urls--> visible for everyone
+                .permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()
